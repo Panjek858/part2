@@ -1,0 +1,85 @@
+<html>
+ <head>
+  <title>
+   Ed Sheeran - Perfect
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <div class="container mx-auto p-4">
+   <div class="max-w-lg mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="flex items-center p-6">
+     <img alt="Sampul album lagu 'Perfect' oleh Ed Sheeran yang menampilkan Ed Sheeran memegang gitar" class="w-24 h-24 object-cover rounded-lg mr-4" height="150" src="https://storage.googleapis.com/a1aa/image/7U44ibKVzLeFXfyRak_O4reLer6YAVxNP9S-gfa1tGg.jpg" width="150"/>
+     <div>
+      <h2 class="text-2xl font-bold mb-2">
+       Ed Sheeran - Perfect
+      </h2>
+      <p class="text-gray-700 mb-4">
+       "Perfect" adalah lagu dari penyanyi-penulis lagu Inggris Ed Sheeran dari album studio ketiganya  (2017). Lagu ini adalah balada romantis yang menggambarkan kisah cinta yang sempurna. Lagu ini berbicara tentang menemukan cinta yang terasa tepat, dan liriknya melukiskan gambaran hubungan yang indah, lembut, dan abadi.
+      </p>
+      <p class="text-gray-700">
+       Lirik lagu ini tulus dan penuh perasaan, menangkap esensi cinta sejati dan kebahagiaan menemukan seseorang yang melengkapi Anda. Ini adalah perayaan cinta dalam bentuknya yang paling murni, menjadikannya pilihan populer untuk pernikahan dan acara romantis.
+      </p>
+     </div>
+    </div>
+    <div class="px-6 pb-6">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center">
+       <button class="text-gray-600 hover:text-gray-800" onclick="document.getElementById('audio').currentTime -= 10">
+        <i class="fas fa-backward"></i>
+       </button>
+       <button class="mx-4 text-gray-600 hover:text-gray-800" onclick="document.getElementById('audio').play()">
+        <i class="fas fa-play"></i>
+       </button>
+       <button class="text-gray-600 hover:text-gray-800" onclick="document.getElementById('audio').pause()">
+        <i class="fas fa-pause"></i>
+       </button>
+       <button class="ml-4 text-gray-600 hover:text-gray-800" onclick="document.getElementById('audio').currentTime += 10">
+        <i class="fas fa-forward"></i>
+       </button>
+      </div>
+      <div class="text-gray-600">
+       <span id="current-time">0:00</span>
+       <span>/</span>
+       <span id="duration">4:23</span>
+      </div>
+     </div>
+     <div class="mt-4">
+      <div class="w-full bg-gray-300 rounded-full h-2.5">
+       <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+      </div>
+     </div>
+     <audio id="audio" class="w-full" ontimeupdate="updateProgressBar()">
+      <source src="https://www.example.com/path-to-your-audio-file.mp3" type="audio/mpeg"/>
+      Your browser does not support the audio element.
+     </audio>
+    </div>
+   </div>
+  </div>
+  <script>
+   const audio = document.getElementById('audio');
+   const progressBar = document.getElementById('progress-bar');
+   const currentTimeElement = document.getElementById('current-time');
+   const durationElement = document.getElementById('duration');
+
+   audio.addEventListener('loadedmetadata', () => {
+     durationElement.textContent = formatTime(audio.duration);
+   });
+
+   function updateProgressBar() {
+     const percentage = (audio.currentTime / audio.duration) * 100;
+     progressBar.style.width = percentage + '%';
+     currentTimeElement.textContent = formatTime(audio.currentTime);
+   }
+
+   function formatTime(seconds) {
+     const minutes = Math.floor(seconds / 60);
+     const secs = Math.floor(seconds % 60);
+     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+   }
+  </script>
+ </body>
+</html>
